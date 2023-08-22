@@ -1,0 +1,7 @@
+{
+  "name": "ion-reminder",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
