@@ -1,0 +1,121 @@
+<app-setting-header title="Pin"></app-setting-header>
+
+<ion-content >
+
+  <ion-img src="../../../assets/img-clean/pin.svg" class="animIcon iconSettings" style="transform:scale(.5)" ></ion-img>
+
+
+  <!-- add pin -->
+  <ion-list color="light" *ngIf="showPin " class="show__add__pin {{hideForm}}" [formGroup]="formGroups">
+    
+    <ion-item color="light">
+      <ion-icon color="dark" slot="start" name="sync"></ion-icon>
+      <ion-input type="email" placeholder="Email de recuperación"  formControlName="email"></ion-input>
+      <ion-icon slot="end" *ngIf="formGroups.controls.email.touched &&formGroups.controls.email.valid" name="checkmark-outline"></ion-icon>
+      <ion-icon slot="end" *ngIf="formGroups.controls.email.touched && formGroups.controls.email.invalid" name="close"></ion-icon>
+    </ion-item>
+ 
+    <ion-item color="light">
+      <ion-icon color="dark" slot="start" name="lock-closed"></ion-icon>
+      <ion-input type="password" maxlength="4" placeholder="Nuevo pin" formControlName="pin"></ion-input>
+      <ion-icon slot="end" *ngIf="formGroups.controls.pin.touched &&formGroups.controls.pin.valid" name="checkmark-outline"></ion-icon>
+      <ion-icon slot="end" *ngIf="formGroups.controls.pin.touched && formGroups.controls.pin.invalid" name="close"></ion-icon>
+  
+    </ion-item>
+
+    <ion-item color="light">
+      <ion-icon color="dark" slot="start" name="lock-closed"></ion-icon>
+      <ion-input type="password" maxlength="4" placeholder="Confirmar pin" formControlName="pinConfirm"></ion-input>
+      <ion-icon slot="end" *ngIf="formGroups.controls.pinConfirm.touched &&formGroups.controls.pinConfirm.valid" name="checkmark-outline"></ion-icon>
+      <ion-icon slot="end" *ngIf="formGroups.controls.pinConfirm.touched && formGroups.controls.pinConfirm.invalid" name="close"></ion-icon>
+  
+    </ion-item>
+    <br>
+    <ion-button color="tertiary" mode="ios"
+        [disabled]="!formGroups.controls.email.valid || !formGroups.controls.pin.valid || !formGroups.controls.pinConfirm.valid"
+        expand="block" (click)="addPin()">
+    Agregar pin
+    <ion-ripple-effect></ion-ripple-effect>
+  </ion-button>
+
+    <ion-button  expand="block" color="light" mode="ios" (click)="cancelPin()">
+      Cancelar
+      <ion-ripple-effect></ion-ripple-effect>
+    </ion-button> 
+
+  </ion-list>
+
+
+  <!-- update pin -->
+
+  <ion-list color="light" *ngIf="showPin2" class="show__add__pin {{hideForm2}}" [formGroup]="formGroups">
+    
+    <ion-item color="light">
+      <ion-icon color="dark" slot="start" name="sync"></ion-icon>
+      <ion-input type="email" placeholder="Email de recuperación"  formControlName="email"></ion-input>
+      <ion-icon slot="end" *ngIf="formGroups.controls.email.touched &&formGroups.controls.email.valid" name="checkmark-outline"></ion-icon>
+      <ion-icon slot="end" *ngIf="formGroups.controls.email.touched && formGroups.controls.email.invalid" name="close"></ion-icon>
+    </ion-item>
+ 
+    <ion-item color="light">
+      <ion-icon color="dark" slot="start" name="lock-closed"></ion-icon>
+      <ion-input type="password" maxlength="4" placeholder="Pin actual" formControlName="pin"></ion-input>
+      <ion-icon slot="end" *ngIf="formGroups.controls.pin.touched &&formGroups.controls.pin.valid" name="checkmark-outline"></ion-icon>
+      <ion-icon slot="end" *ngIf="formGroups.controls.pin.touched && formGroups.controls.pin.invalid" name="close"></ion-icon>
+  
+    </ion-item>
+
+    <ion-item color="light">
+      <ion-icon color="dark" slot="start" name="lock-closed"></ion-icon>
+      <ion-input type="password" maxlength="4" placeholder="Nuevo pin" formControlName="pinConfirm"></ion-input>
+      <ion-icon slot="end" *ngIf="formGroups.controls.pinConfirm.touched &&formGroups.controls.pinConfirm.valid" name="checkmark-outline"></ion-icon>
+      <ion-icon slot="end" *ngIf="formGroups.controls.pinConfirm.touched && formGroups.controls.pinConfirm.invalid" name="close"></ion-icon>
+  
+    </ion-item>
+    <br>
+    <ion-button color="tertiary"
+    [disabled]="!formGroups.controls.email.valid || !formGroups.controls.pin.valid || !formGroups.controls.pinConfirm.valid"
+    expand="block" mode="ios" (click)="updatePin()">Actualizar pin
+    <ion-ripple-effect></ion-ripple-effect>
+  </ion-button>
+
+    <ion-button  expand="block" color="light" mode="ios" (click)="cancelPin()">
+      Cancelar
+      <ion-ripple-effect></ion-ripple-effect>
+    </ion-button> 
+
+  </ion-list>
+
+
+
+ 
+ 
+  <ion-list mode="md" *ngIf="!showPin2 && !showPin">
+
+
+    <ion-item (click)="showAddPin()"  [disabled]="existLock"   detail> 
+      <ion-icon slot="start" name="add"></ion-icon>
+      <ion-label>Nuevo pin
+        <p>Protege tus notas agregando un nuevo PIN</p>
+      </ion-label>
+    </ion-item>
+
+    <ion-item  (click)="changePin()"  [disabled]="!existLock"   detail> 
+      <ion-icon slot="start" name="refresh"></ion-icon>
+      <ion-label>Cambiar pin
+        <p>Recuerda cambiar el pin al menos cada 6 meses</p>
+      </ion-label>
+    </ion-item>
+
+    <ion-item  (click)="deletePassword()"  [disabled]="!existLock"  > 
+      <ion-icon slot="start" name="trash"></ion-icon>
+      <ion-label>Restablecer pin</ion-label>
+    </ion-item>
+
+  
+    
+    
+  </ion-list>
+</ion-content>
+
+ 

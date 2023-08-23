@@ -1,0 +1,36 @@
+<ion-header class="ion-no-border" mode="ios">
+  <ion-toolbar>
+
+    <ion-buttons slot="start">
+     
+       <ion-icon slot="icon-only" mode="ios"  routerLink="/home/notes" name="chevron-back-outline"></ion-icon>
+    </ion-buttons>
+
+    <ion-title>Setting</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content  mode="ios" >
+
+  <ion-img class="animIcon iconSettings"   src="../../../assets/img-clean/config.svg"></ion-img>
+  
+  <ion-searchbar animated placeholder="Buscar en configuración" mode="ios" color="light" [(ngModel)]="searchValue"></ion-searchbar>
+
+  <ion-list mode="ios" >
+ 
+
+    <ion-item  *ngFor="let conf of configs | searchB:searchValue" detail [disabled]="conf.disabled" [routerLink]="conf.router" mode="md"> 
+      <ion-icon slot="start" [name]="conf.icon"></ion-icon> 
+      <ion-label   class="fadeIn"> {{conf.title}}
+       <p>{{conf.subname}}</p>
+      </ion-label> 
+    </ion-item>
+
+
+ 
+   
+  </ion-list>
+
+</ion-content>

@@ -1,0 +1,83 @@
+ion-input{
+    text-align:center; 
+    font-family: fantasy;
+    color: white;
+    font-size: 20px;
+    border-radius: 8px;
+    background-color: rgb(85, 31, 187);
+}
+ion-img{
+    transform: scale(.7);
+    height: 300px;
+}
+ 
+@keyframes error{
+    10%{
+        transform:translateX(10px);
+    }
+    30%{
+        transform:translateX(-10px);
+    }
+   
+    100%{
+        transform:translateX(0);
+    }
+}
+
+.showImage{
+    animation: showImg 1.8s linear;
+}
+@keyframes showImg{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+.spinnerLoad{
+   
+    animation: spinn 1s infinite linear;
+     
+}
+@keyframes spinn{
+    to{
+        transform: rotate(360deg)
+    }
+    20%{
+        color: rgb(233, 19, 233)
+    }
+    100%{
+        color: yellow 
+    }
+}
+
+
+.gridButtonPin{
+    display: grid;
+    justify-items: center;
+    justify-content: center;
+   
+    grid-template-columns: 90px 90px 90px;
+    grid-template-rows: 70px 70px 70px 70px;
+}
+
+.gridButtonPin ion-button{
+    font-size: 20px !important;
+    width: 59px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+} 
+ 
+.pins{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.pins ion-button{
+  
+    width: 59px;
+    font-size: 20px;
+    height: 45px; 
+    border-bottom-color: #eee !important;
+}

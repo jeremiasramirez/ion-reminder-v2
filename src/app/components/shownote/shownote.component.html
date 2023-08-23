@@ -1,0 +1,89 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="tertiary">
+ 
+    <ion-buttons slot="start" mode="md"> 
+      <ion-button (click)="closeMod()">
+        <ion-icon  slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    
+    <ion-title> {{ data.title }}</ion-title>
+
+    <ion-buttons slot="end" mode="md"> 
+        <ion-button  *ngIf="showToolbar" (click)="toolbar()">
+          <ion-icon name="chevron-up-outline" slot="icon-only"></ion-icon>
+        </ion-button>
+        <ion-button  *ngIf="!showToolbar" (click)="toolbar()">   
+          <ion-icon name="chevron-down-outline" slot="icon-only">  </ion-icon>
+      </ion-button>
+      <ion-button (click)="hideBar()">
+        <ion-icon name="expand-outline"></ion-icon>
+      </ion-button> 
+    </ion-buttons>
+    
+  </ion-toolbar>
+
+  <ion-toolbar class="addAnimation toolbarRadius" mode="md" color="tertiary" *ngIf="showToolbar">
+    <ion-buttons>
+  
+      <ion-button (click)="openFont($event)">
+        <small>{{stylesFromNotes.font|slice:0:8}}</small>
+      </ion-button> 
+
+      <ion-button mode="ios" (click)="openSize($event)">
+        <ion-badge color="tertiary">{{stylesFromNotes.size}}</ion-badge>
+        <ion-icon name="chevron-down-outline"></ion-icon>
+      </ion-button> 
+
+      <ion-button (click)="openFontBold()">
+        <strong style="font-weight: 700;">B</strong>
+      </ion-button> 
+
+      <ion-button (click)="openColor($event)">
+        <ion-icon name="brush-outline"></ion-icon>
+      </ion-button>
+
+      <ion-button (click)="openFontItalic()">
+        <ion-label style="font-style:italic">i</ion-label>
+      </ion-button> 
+
+      <ion-button (click)="openAlignment($event)">
+        <ion-icon name="reorder-three-outline"></ion-icon>
+        <ion-icon name="chevron-down-outline"></ion-icon>
+      </ion-button> 
+
+      <ion-button (click)="openFontSpaced($event)">
+        <ion-icon name="filter-outline"></ion-icon>
+        <ion-icon name="chevron-down-outline"></ion-icon>
+      </ion-button> 
+
+
+
+      
+    </ion-buttons>
+  </ion-toolbar>
+ 
+</ion-header>
+<style>
+
+</style>
+ 
+<ion-content>
+  <br>
+  <br>
+  <ion-textarea 
+    [color]="stylesFromNotes.color"
+    [value]="data.description" 
+    class="content"
+    [ngStyle]="{'font-size':stylesFromNotes.size+'px',
+                'font-family':stylesFromNotes.font,
+                'font-style':stylesFromNotes.italic,
+                'font-weight':stylesFromNotes.fontBold,
+                'line-height': stylesFromNotes.spaced+'px',
+                'text-align':stylesFromNotes.alignment}"
+    (keyup)="saveChange()" 
+    [(ngModel)]="data.description"
+    placeholder="Description" rows="30" 
+    ></ion-textarea>
+    
+</ion-content>

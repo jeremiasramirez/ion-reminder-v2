@@ -1,0 +1,37 @@
+ion-item{
+    text-align: center; 
+}
+
+.show__add__pin{
+    padding-top: 0 !important;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    animation: showPin .5s ease-in-out;
+    transition: 1s
+}
+
+@keyframes showPin{
+    from{
+        transform: translateY(10px);
+        opacity: 0;
+    }
+    to{
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.hideFormPin{
+    animation: hidePin .5s ease-in-out;
+}
+@keyframes hidePin{
+    from{
+        transform: translateY(0);
+        opacity: 1;
+    }
+    to{
+        transform: translateY(10px);
+        opacity: 0;
+    }
+   
+}
